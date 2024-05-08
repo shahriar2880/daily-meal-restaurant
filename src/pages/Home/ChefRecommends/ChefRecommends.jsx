@@ -5,8 +5,8 @@ import CrispyChickenSandwich from "../../../assets/home/Crispy Chicken Sandwich.
 
 const ChefRecommends = () => {
   return (
-    <section className="flex flex-row  gap-2">
-      <div className="card w-96 glass">
+    <section className="md:flex flex-row gap-2">
+      <div className="card md:w-96 sm:w-auto glass mb-5">
           <img src={ChickenNuggets} className='h-[200px]' alt="Chicken Nuggets" />
         <div className="card-body items-center">
           <h2 className="card-title">Chicken Nuggets</h2>
@@ -17,13 +17,13 @@ const ChefRecommends = () => {
             barbecue sauce, or honey mustard.
           </p>
           <div className="card-actions justify-end">
-            <button className="btn btn-outline border-0 border-b-4">
-              Read More
+            <button className="btn btn-outline border-0 uppercase border-b-4">
+              Add To Cart
             </button>
           </div>
         </div>
       </div>
-      <div className="card w-96 glass">
+      <div className="card md:w-96 sm:w-auto glass mb-5">
           <img src={IceCreamCone} className='h-[200px]' alt="Ice Cream Cone" />
         <div className="card-body items-center ">
           <h2 className="card-title">Ice Cream Cone</h2>
@@ -35,12 +35,12 @@ const ChefRecommends = () => {
           </p>
           <div className="card-actions justify-end">
             <button className="btn btn-outline btn-active border-0 border-b-4">
-              Buy Now
+            Add To Cart
             </button>
           </div>
         </div>
       </div>
-      <div className="card w-96 glass">
+      <div className="card md:w-96 sm:w-auto glass mb-5">
           <img src={CrispyChickenSandwich} className='h-[200px]' alt="Crispy Chicken Sandwich" />
         <div className="card-body items-center">
           <h2 className="card-title">Crispy Chicken Sandwich</h2>
@@ -52,7 +52,7 @@ const ChefRecommends = () => {
           </p>
           <div className="card-actions justify-end">
             <button className="btn btn-outline  border-0 border-b-4">
-              Buy Now
+            Add To Cart
             </button>
           </div>
         </div>
