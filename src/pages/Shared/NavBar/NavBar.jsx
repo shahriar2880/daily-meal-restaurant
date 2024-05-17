@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { AiOutlineShopping } from "react-icons/ai";
+
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
-    .then(()=>{ })
-    .catch(error => console.log(error));
+      .then(() => {})
+      .catch((error) => console.log(error));
   };
 
   const navOptions = (
@@ -25,20 +27,29 @@ const NavBar = () => {
       <li>
         <Link to="/secret">Secret</Link>
       </li>
-      {user ? 
+      <li>
+        <Link to="/">
+          <button className="btn">
+          <AiOutlineShopping />
+            <div className="badge badge-secondary">+0</div>
+          </button>
+        </Link>
+      </li>
+
+      {user ? (
         <>
-        <span>{user?.displayName}</span>
+          {/* <span>{user?.displayName}</span> */}
           <button onClick={handleLogOut} className="">
             LogOut
           </button>
         </>
-       : 
+      ) : (
         <>
           <li>
             <Link to="/login">LogIn</Link>
           </li>
         </>
-      }
+      )}
     </>
   );
   return (
@@ -73,7 +84,6 @@ const NavBar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navOptions}</ul>
       </div>
-      
     </div>
   );
 };
