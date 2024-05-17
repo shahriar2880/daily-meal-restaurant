@@ -8,6 +8,7 @@ import Blog from "../Blog/Blog";
 import ChefRecommends from "../ChefRecommends/ChefRecommends";
 import CallUs from "../CallUs/CallUs";
 import { Helmet } from "react-helmet-async";
+import BlogPost from "../BlogPost/BlogPost";
 
 const Home = () => {
   return (
@@ -17,7 +18,7 @@ const Home = () => {
       </Helmet>
       <Banner></Banner>
       <Category></Category>
-      <Blog></Blog>
+      <BlogPost></BlogPost>
       <PopularMenu></PopularMenu>
       <CallUs></CallUs>
       <ChefRecommends></ChefRecommends>
