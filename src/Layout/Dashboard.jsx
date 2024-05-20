@@ -54,9 +54,7 @@ const Dashboard = () => {
               My Booking
             </NavLink>
           </li>
-        </ul>
-        <hr className="bg-black"></hr>
-        <ul className="menu p-4 gap-1 uppercase">
+          <div className="divider"></div>
           <li>
             <NavLink to="/">
               <FaHome></FaHome>
@@ -70,7 +68,7 @@ const Dashboard = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/shop">
+            <NavLink to="/order/salad">
               <FaShoppingBag></FaShoppingBag>
               Shop
             </NavLink>
@@ -82,9 +80,13 @@ const Dashboard = () => {
             </NavLink>
           </li>
         </ul>
+        
+        <ul className="menu p-4 gap-1 uppercase">
+          
+        </ul>
       </div>
       {/* Dashboard content */}
-      <div className="flex-1">
+      <div className="flex-1 p-8">
         <Outlet></Outlet>
       </div>
     </div>
