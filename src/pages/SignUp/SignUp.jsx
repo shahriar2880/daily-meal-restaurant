@@ -6,10 +6,11 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
   const [init, setInit] = useState(false);
-
   // this should be run only once per application lifetime
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -106,22 +107,29 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const onSubmit = (value) => {
-    console.log(value);
     createUser(value.email, value.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
       updateUserProfile(value.name, value.photoURL)
         .then(() => {
-          console.log("user profile info update");
-          reset();
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "User create successful",
-            showConfirmButton: false,
-            timer: 1500,
+          //create user entry in database
+          const userInfo = {
+            name: value.name,
+            email: value.email,
+          };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.value.insertedId) {
+              reset();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User create successful",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            }
           });
-          navigate("/");
         })
         .catch((error) => console.log(error));
     });
