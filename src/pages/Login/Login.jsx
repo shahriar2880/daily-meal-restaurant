@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 
 const Login = () => {
@@ -156,7 +157,7 @@ const Login = () => {
                 <input
                   type="email"
                   name="email"
-                  placeholder="email"
+                  placeholder="Email"
                   className="input input-bordered"
                   required
                 />
@@ -168,7 +169,7 @@ const Login = () => {
                 <input
                   type="password"
                   name="password"
-                  placeholder="password"
+                  placeholder="Password"
                   className="input input-bordered"
                   required
                 />
@@ -186,7 +187,7 @@ const Login = () => {
                 onBlur={handleValidateCaptha}
                   type="text"
                   name="captcha"
-                  placeholder="type captcha here"
+                  placeholder="Type Captcha Here"
                   className="input input-bordered"
                   required
                 />
@@ -206,8 +207,11 @@ const Login = () => {
                 New User? <Link to="/signup" className="text-blue-700 underline">Create An Account</Link>
               </small>
             </p>
+            <div className="divider"></div>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
+        
       </div>
     </>
   );

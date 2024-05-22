@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const axiosPublic = useAxiosPublic();
@@ -243,6 +244,8 @@ const SignUp = () => {
                 </Link>
               </small>
             </p>
+            <div className="divider"></div>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
