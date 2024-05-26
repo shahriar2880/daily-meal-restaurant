@@ -119,7 +119,8 @@ const SignUp = () => {
             email: value.email,
           };
           axiosPublic.post("/users", userInfo).then((res) => {
-            if (res.value.insertedId) {
+            if (res.status === 200 || res.status === 201) {
+              console.log('user added to the database')
               reset();
               Swal.fire({
                 position: "top-end",
@@ -128,7 +129,7 @@ const SignUp = () => {
                 showConfirmButton: false,
                 timer: 1500,
               });
-              navigate("/");
+              navigate('/');
             }
           });
         })
