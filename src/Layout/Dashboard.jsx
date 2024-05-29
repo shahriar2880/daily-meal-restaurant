@@ -20,14 +20,16 @@ import useAdmin from "../hooks/useAdmin";
 const Dashboard = () => {
   const [cart] = useCart();
   // get isadmin value from the database
-  const [isAdmin] = useAdmin();
+  const [isAdmin, isLoading] = useAdmin();
 
   return (
     <div className="flex">
       {/* dashboard side bar */}
       <div className="w-64 min-h-screen bg-orange-100">
         <ul className="menu p-4 gap-1 uppercase">
-          {isAdmin ? (
+          {
+          
+          isAdmin ? (
             <>
               <li>
                 <NavLink to="/dashboard/adminHome">
@@ -59,7 +61,6 @@ const Dashboard = () => {
                   All users
                 </NavLink>
               </li>
-              
             </>
           ) : (
             <>
