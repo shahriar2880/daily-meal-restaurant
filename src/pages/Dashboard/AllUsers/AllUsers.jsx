@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -58,6 +59,7 @@ const handleDeleteUser = user => {
 }
   return (
     <div className="">
+            <SectionTitle heading="add an admin" subHeading="what's new?"></SectionTitle>
       <div className="flex justify-evenly mb-8">
         <h2 className="text-3xl uppercase text-left">
           Total Users: {users.length}
