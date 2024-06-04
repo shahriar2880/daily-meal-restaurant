@@ -21,6 +21,16 @@ const AddItems = () => {
         "Content-Type" : 'multipart/form-data'
       }
     });
+    if(res.data.success){
+      //now send the menu item data to the server with the image
+      const menuItem ={
+        name: data.name,
+        category: data.category,
+        price : priceFloat(data.price),
+        recipe: data.recipe,
+        image: res.data.display_url
+      }
+    }
     console.log(res.data)
   };
   return (
