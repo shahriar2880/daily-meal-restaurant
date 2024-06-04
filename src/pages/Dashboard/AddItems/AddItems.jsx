@@ -3,6 +3,7 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { FaUtensils } from "react-icons/fa";
 import useAxiosPublic from './../../../hooks/useAxiosPublic';
 import useAxiosSecure from './../../../hooks/useAxiosSecure';
+import Swal from "sweetalert2";
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOISTING_KEY;
@@ -10,7 +11,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 
 const AddItems = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
 
   const axiosSecure = useAxiosSecure();
@@ -29,7 +30,7 @@ const AddItems = () => {
       const menuItem ={
         name: data.name,
         category: data.category,
-        price : priceFloat(data.price),
+        price : parseFloat(data.price),
         recipe: data.recipe,
         image: res.data.display_url
       }
@@ -37,8 +38,15 @@ const AddItems = () => {
       const menuRes = await axiosSecure.post('/menu', menuItem);
       console.log(menuRes.data)
       if(menuRes.data.insertedId){
+        reset()
         //show success popup
-        
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${data.name} added to menu`,
+          showConfirmButton: false,
+          timer: 1500
+        });
       }
 
     }
