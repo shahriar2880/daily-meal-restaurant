@@ -1,14 +1,12 @@
 import { useForm } from "react-hook-form";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { FaUtensils } from "react-icons/fa";
-import useAxiosPublic from './../../../hooks/useAxiosPublic';
-import useAxiosSecure from './../../../hooks/useAxiosSecure';
+import useAxiosPublic from "./../../../hooks/useAxiosPublic";
+import useAxiosSecure from "./../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
-
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOISTING_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
-
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddItems = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -19,38 +17,37 @@ const AddItems = () => {
   const onSubmit = async (data) => {
     console.log(data);
     //image upload to imgbb and then get an url
-    const imageFile = {image: data.image[0]}
+    const imageFile = { image: data.image[0] };
     const res = await axiosPublic.post(image_hosting_api, imageFile, {
       headers: {
-        "Content-Type" : 'multipart/form-data'
-      }
+        "Content-Type": "multipart/form-data",
+      },
     });
-    if(res.data.success){
+    if (res.data.success) {
       //now send the menu item data to the server with the image
-      const menuItem ={
+      const menuItem = {
         name: data.name,
         category: data.category,
-        price : parseFloat(data.price),
+        price: parseFloat(data.price),
         recipe: data.recipe,
-        image: res.data.display_url
-      }
+        image: res.data.display_url,
+      };
       //menu response
-      const menuRes = await axiosSecure.post('/menu', menuItem);
-      console.log(menuRes.data)
-      if(menuRes.data.insertedId){
-        reset()
+      const menuRes = await axiosSecure.post("/menu", menuItem);
+      console.log(menuRes.data);
+      if (menuRes.data.insertedId) {
+        reset();
         //show success popup
         Swal.fire({
           position: "top-end",
           icon: "success",
           title: `${data.name} added to menu`,
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
       }
-
     }
-    console.log(res.data)
+    console.log(res.data);
   };
   return (
     <div>
@@ -69,7 +66,7 @@ const AddItems = () => {
             <input
               type="text"
               placeholder="Recipe Name"
-              {...register("name", {required:true})}
+              {...register("name", { required: true })}
               className="input input-bordered w-full "
             />
           </div>
@@ -82,11 +79,11 @@ const AddItems = () => {
                 <label className="label-text">Category*</label>
               </div>
               <select
-              defaultValue="default"
-                {...register("category", {required:true})}
+                defaultValue="default"
+                {...register("category", { required: true })}
                 className="select select-bordered w-full"
               >
-                <option disabled value="default" >
+                <option disabled value="default">
                   Please Select a Category!
                 </option>
                 <option value="salad">Salad</option>
@@ -103,7 +100,7 @@ const AddItems = () => {
               <input
                 type="number"
                 placeholder="Price"
-                {...register("price", {required:true})}
+                {...register("price", { required: true })}
                 className="input input-bordered w-full "
               />
             </div>
@@ -116,7 +113,7 @@ const AddItems = () => {
               <span className="label-text">Recipe Details*</span>
             </div>
             <textarea
-              {...register("recipe", {required:true})}
+              {...register("recipe", { required: true })}
               className="textarea textarea-bordered h-24"
               placeholder="Recipe Details..."
             ></textarea>
@@ -126,7 +123,7 @@ const AddItems = () => {
 
           <div className="w-full mb-3">
             <input
-              {...register("image", {required:true})}
+              {...register("image", { required: true })}
               type="file"
               className="file-input w-full"
             />
