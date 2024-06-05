@@ -3,11 +3,12 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import useMenu from "../../../hooks/useMenu";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
   const [menu, refetch] = useMenu();
   const axiosSecure = useAxiosSecure();
-  const handleDeleteItem = (item) => {
+  const handleDeleteItem =  (item) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -16,7 +17,7 @@ const ManageItems = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    }).then(async (result) => {
+    }).then( async(result) => {
       if (result.isConfirmed) {
         const res = await axiosSecure.delete(`/menu/${item._id}`);
         // console.log(res.data);
@@ -81,12 +82,14 @@ const ManageItems = () => {
                   </td>
                   <td>${item.price}</td>
                   <td>
-                    <button
-                      onClick={() => handleUpdateItem(item)}
-                      className="btn btn-ghost btn-md"
-                    >
-                      <FaEdit className="text-red-800"></FaEdit>
-                    </button>
+                    <Link to={`/database/updateItems/${item._id}`}>
+                      <button
+                        onClick={() => handleUpdateItem(item)}
+                        className="btn btn-ghost btn-md"
+                      >
+                        <FaEdit className="text-red-800"></FaEdit>
+                      </button>
+                    </Link>
                   </td>
                   <td>
                     <button
