@@ -82,7 +82,7 @@ const ManageItems = () => {
                   </td>
                   <td>${item.price}</td>
                   <td>
-                    <Link to={`/database/updateItems/${item._id}`}>
+                    <Link to={`/dashboard/updateItem/${item._id}`}>
                       <button
                         onClick={() => handleUpdateItem(item)}
                         className="btn btn-ghost btn-md"
