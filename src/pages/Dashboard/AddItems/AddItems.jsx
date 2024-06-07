@@ -41,9 +41,9 @@ const AddItems = () => {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: `${data.name} added to menu`,
+          title: `${data.name} is added to the menu.`,
           showConfirmButton: false,
-          timer: 1500,
+          timer: 1500
         });
       }
     }
