@@ -63,18 +63,20 @@ export const router = createBrowserRouter([
           path: 'addItems',
           element : <AdminRoute><AddItems></AddItems></AdminRoute>
         },
-        {
-          path: 'users',
-          element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
-        },
+        
         {
           path: 'manageItems',
           element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
         },
         {
           path: 'updateItem/:id',
-          element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>
-        }
+          element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
+          loader: ({params}) => fetch(`http://localhost:5050/menu/${params.id}`)
+        },
+        {
+          path: 'users',
+          element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+        },
       ]
     }
   ]);
