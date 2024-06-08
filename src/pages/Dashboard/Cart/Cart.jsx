@@ -38,9 +38,17 @@ const Cart = () => {
       <div className="flex justify-evenly mb-8">
         <h2 className="text-3xl uppercase">Items: {cart.length}</h2>
         <h2 className="text-3xl uppercase">Total Price:$ {totalPrice}</h2>
-        <Link to="/dashboard/payment">
-          <button disabled={!cart.length} className="btn btn-primary ">Pay</button>
-        </Link>
+        {cart.length ? (
+          <Link to="/dashboard/payment">
+            <button className="btn btn-primary ">Pay</button>
+          </Link>
+        ) : (
+          <Link to="/dashboard/payment">
+            <button disabled className="btn btn-primary ">
+              Pay
+            </button>
+          </Link>
+        )}
       </div>
       <div className="overflow-x-auto">
         <table className="table w-full">
