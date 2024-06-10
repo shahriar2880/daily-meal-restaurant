@@ -1,3 +1,4 @@
+import ReactTypingEffect from "react-typing-effect";
 import useAuth from "../../../hooks/useAuth";
 
 const AdminHome = () => {
@@ -8,6 +9,7 @@ const AdminHome = () => {
         <span>Hi, Welcome </span>
         {user?.displayName ? user.displayName : "Back"}
       </h2>
+      
     </div>
   );
 };
