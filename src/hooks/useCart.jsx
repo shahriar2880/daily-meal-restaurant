@@ -1,11 +1,11 @@
-import { useQuery } from '@tanstack/react-query'
-import React from 'react'
-import useAxiosSecure from './useAxiosSecure'
-import useAuth from './useAuth';
+// api, axios (axios secure), tan stack 
+
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "./useAxiosSecure";
+import useAuth from "./useAuth";
 
 const useCart = () => {
-  //tan stack query
-  const axiosSecure = useAxiosSecure();
+    const axiosSecure = useAxiosSecure();
     const { user} = useAuth();
     const { refetch, data: cart = [] } = useQuery({
         queryKey: ['cart', user?.email],
@@ -16,6 +16,6 @@ const useCart = () => {
     })
 
     return [cart, refetch]
-}
+};
 
-export default useCart
+export default useCart;

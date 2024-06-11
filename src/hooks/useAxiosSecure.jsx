@@ -1,13 +1,12 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
-import React, { useEffect } from "react";
 
 const axiosSecure = axios.create({
   baseURL: "https://daily-meal-server.vercel.app",
 });
 const useAxiosSecure = () => {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
     const { logOut } = useAuth();
 
     // request interceptor to add authorization header for every secure call to teh api

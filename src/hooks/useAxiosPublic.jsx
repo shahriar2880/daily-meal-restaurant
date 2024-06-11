@@ -1,10 +1,13 @@
-import axios from "axios"
+import axios from "axios";
 
 const axiosPublic = axios.create({
     baseURL: 'https://daily-meal-server.vercel.app'
 })
-const useAxiosPublic = () => {
-  return axiosPublic;
-}
 
-export default useAxiosPublic
+const useAxiosPublic = () => {
+    return axiosPublic;
+};
+
+export default useAxiosPublic;
+
+
