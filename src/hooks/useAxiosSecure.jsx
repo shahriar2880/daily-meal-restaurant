@@ -4,7 +4,7 @@ import useAuth from "./useAuth";
 import React, { useEffect } from "react";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5050",
+  baseURL: "https://daily-meal-server.vercel.app",
 });
 const useAxiosSecure = () => {
   const navigate = useNavigate();
