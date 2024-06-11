@@ -20,7 +20,7 @@ const UpdateItem = () => {
         const imageFile = { image: data.image[0] }
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
             headers: {
-                'content-type': 'multipart/form-data'
+                'Content-Type': 'multipart/form-data'
             }
         });
         if (res.data.success) {
